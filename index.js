@@ -61,7 +61,7 @@ module.exports = function argv(args, options = {}) {
 
   function set(key, value) {
     if (key[1] === '-') {
-      _set(key.slice(2), value);
+      _set(key.replace(/^-+/, ''), value);
     } else {
       key.slice(1).split('').forEach(k => _set(k, value));
     }
