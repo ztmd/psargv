@@ -1,0 +1,20 @@
+{
+  "name": "@ztmd/argv",
+  "version": "0.0.1",
+  "description": "Opinionated argument parser for node.js CLI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ztmd/argv.git"
+  },
+  "keywords": ["argv", "parser", "CLI"],
+  "author": "xovel <xovel@vip.qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ztmd/argv/issues"
+  },
+  "homepage": "https://github.com/ztmd/argv#readme"
+}
