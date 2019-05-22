@@ -23,8 +23,8 @@ argv(args, options);
 
 An object to representation the result.
 
-`result._` is specified as the first argument(s).
-`result.$` is specified as extra arguments seperated by `--` exactly.
+- `result._` is specified as the first argument(s).
+- `result.$` is specified as extra arguments seperated by `--` exactly.
 
 > If you need to parse arguments which the key is `_` or `$`, set `options._` to a truthy value, and notice other values will be moved to `result.argv`.
 
