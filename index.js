@@ -3,7 +3,7 @@
 module.exports = function argv(args, options = {}) {
 
   if (!Array.isArray(args)) {
-    throw new Error('`args` must be an array')
+    throw new Error('`args` must be an array');
   }
 
   const result = {};

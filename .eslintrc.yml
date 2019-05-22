@@ -3,4 +3,3 @@ extends:
 
 rules:
   semi: 2
-  no-console: 0

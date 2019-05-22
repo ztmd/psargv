@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 'use strict';
 
 const assert = require('assert');
@@ -22,7 +24,7 @@ describe('@ztmd/argv', function () {
 
   it('It should support multi values.', function () {
     const result = argv(['example', '--list', 'a', '--list', 'b'], { multi: true });
-    assert.deepStrictEqual(result, { _: [ 'example' ], list: [ 'a', 'b' ] });
+    assert.deepStrictEqual(result, { _: ['example'], list: ['a', 'b'] });
   });
 
   it('It should support `--` flag.', function () {
@@ -37,5 +39,3 @@ describe('@ztmd/argv', function () {
   });
 
 });
-
-console.log(argv(['underline', '--_', 'abc'], { _: true }))
