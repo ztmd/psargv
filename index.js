@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function argv(args, options = {}) {
+module.exports = function psargv(args, options = {}) {
 
   if (!Array.isArray(args)) {
     throw new Error('`args` must be an array');

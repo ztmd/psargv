@@ -1,5 +1,5 @@
 {
-  "name": "@ztmd/argv",
+  "name": "psargv",
   "version": "0.0.1",
   "description": "Opinionated argument parser for node.js CLI.",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ztmd/argv.git"
+    "url": "git+https://github.com/ztmd/psargv.git"
   },
   "keywords": ["argv", "parser", "CLI"],
   "author": "xovel <xovel@vip.qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ztmd/argv/issues"
+    "url": "https://github.com/ztmd/psargv/issues"
   },
-  "homepage": "https://github.com/ztmd/argv#readme"
+  "homepage": "https://github.com/ztmd/psargv#readme"
 }

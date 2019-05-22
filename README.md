@@ -5,17 +5,17 @@ Opinionated argument parser for node.js CLI.
 ## Install
 
 ```bash
-npm install @ztmd/argv
+npm install psargv
 ```
 
 ```bash
-yarn add @ztmd/argv
+yarn add psargv
 ```
 
 ## Usage
 
 ```js
-const argv = require('@ztmd/argv');
+const argv = require('psargv');
 argv(args, options);
 ```
 
@@ -67,7 +67,7 @@ argv(['example', '--list', 'a', '--list', 'b'], { multi: true });
 
 ```js
 // demo.js
-const argv = require('@ztmd/argv');
+const argv = require('psargv');
 
 console.log(argv(process.argv.slice(2), { multi: ['test'] }));
 ```
