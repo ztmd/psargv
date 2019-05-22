@@ -17,6 +17,10 @@ module.exports = function argv(args, options = {}) {
     result._ = [];
   }
 
+  if (options._) {
+    result.argv = {};
+  }
+
   while (args.length) {
     let arg = args.shift();
 
@@ -64,17 +68,18 @@ module.exports = function argv(args, options = {}) {
   }
 
   function _set(key, value) {
+    const dest = options._ ? result.argv : result;
     if (
       multi === true
       || (Array.isArray(multi) && multi.includes(key))
     ) {
-      if (result[key]) {
-        result[key].push(value);
+      if (dest[key]) {
+        dest[key].push(value);
       } else {
-        result[key] = [value];
+        dest[key] = [value];
       }
     } else {
-      result[key] = value;
+      dest[key] = value;
     }
   }
 

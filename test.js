@@ -31,4 +31,11 @@ describe('@ztmd/argv', function () {
     assert.deepStrictEqual(result.$, { _: [], sort: true });
   });
 
+  it('It should support `options._`', function () {
+    const result = argv(['underline', '--_', 'abc'], { _: true });
+    assert.deepStrictEqual(result, { _: ['underline'], argv: { _: 'abc' } });
+  });
+
 });
+
+console.log(argv(['underline', '--_', 'abc'], { _: true }))

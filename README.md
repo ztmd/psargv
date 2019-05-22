@@ -19,6 +19,15 @@ const argv = require('@ztmd/argv');
 argv(args, options);
 ```
 
+## Return
+
+An object to representation the result.
+
+`result._` is specified as the first argument(s).
+`result.$` is specified as extra arguments seperated by `--` exactly.
+
+> If you need to parse arguments which the key is `_` or `$`, set `options._` to a truthy value, and notice other values will be moved to `result.argv`.
+
 ## Options
 
 ### first
@@ -26,12 +35,21 @@ argv(args, options);
 - type: `boolean`
 - default: **true**
 
-First arguments
+`true` to accept multi values for first arguments.
 
-Name|Type|Default|Note
-----|----|-------|----
-first|`boolean`|**true**|
-mulit|`boolean`/`array`|
+### multi
+
+- type: `boolean`/`array`
+
+Use multi values for the specify `key`.
+
+While `multi` is an array, check `key` is in it or not.
+
+### _
+
+- type: `boolean`
+
+Support using underline `_` as the `key`.
 
 ## Example
 
