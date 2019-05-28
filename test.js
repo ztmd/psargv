@@ -38,4 +38,14 @@ describe('argv', function () {
     assert.deepStrictEqual(result, { _: ['underline'], argv: { _: 'abc' } });
   });
 
+  it('It should support hyphen', function () {
+    const result = argv(['--foo-bar', 'abc']);
+    assert.deepStrictEqual(result, { _: [], fooBar: 'abc' });
+  });
+
+  it('It should support `--no-` flag', function () {
+    const result = argv(['--no-sort', '--desc', '--no-result', 'none']);
+    assert.deepStrictEqual(result, { _: [], sort: false, desc: true, noResult: 'none' });
+  });
+
 });

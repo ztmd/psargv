@@ -61,7 +61,13 @@ module.exports = function argv(args, options = {}) {
 
   function set(key, value) {
     if (key[1] === '-') {
-      _set(key.replace(/^-+/, ''), value);
+      let name = key.replace(/^-+/, '');
+      if (name.indexOf('no-') === 0 && name.length > 3 && value === true) {
+        name = name.substr(3);
+        value = false;
+      }
+      name = name.replace(/-(\w)/g, (_, a) => a.toUpperCase());
+      _set(name, value);
     } else {
       key.slice(1).split('').forEach(k => _set(k, value));
     }
