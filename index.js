@@ -69,7 +69,15 @@ module.exports = function argv(args, options = {}) {
       name = name.replace(/-(\w)/g, (_, a) => a.toUpperCase());
       _set(name, value);
     } else {
-      key.slice(1).split('').forEach(k => _set(k, value));
+      key.slice(1).split('').forEach(k => {
+        let alias = options.alias && options.alias[k];
+        if (alias) {
+          _set(alias, value)
+        }
+        if (!alias || options.keepAlias) {
+          _set(k, value)
+        }
+      });
     }
   }
 

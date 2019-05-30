@@ -51,6 +51,21 @@ While `multi` is an array, check `key` is in it or not.
 
 Support using underline `_` as the `key`.
 
+### alias
+
+- type: object
+
+Define alias map. If it is specified to `{s: 'sort'}`, while parsing `s`, use `sort` instead.
+
+### keepAlias
+
+- type: boolean
+- default: `false`
+
+Keep the abbreviation key.
+
+Only available when `alias` is triggered.
+
 ## Example
 
 ### Scripts

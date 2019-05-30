@@ -48,4 +48,9 @@ describe('argv', function () {
     assert.deepStrictEqual(result, { _: [], sort: false, desc: true, noResult: 'none' });
   });
 
+  it('It should support `options.alias`', function () {
+    const result = argv(['-s', 'foo', '--other', 'bar'], { alias: { s: 'selection' } });
+    assert.deepStrictEqual(result, { _: [], selection: 'foo', other: 'bar' });
+  });
+
 });
