@@ -83,6 +83,9 @@ module.exports = function argv(args, options = {}) {
 
   function _set(key, value) {
     const dest = options._ ? result.argv : result;
+    if (options.number && /^[+-]?\d+(\.\d+)?([eE]\d+)?$/.test(value)) {
+      value = +value;
+    }
     if (
       multi === true
       || (Array.isArray(multi) && multi.includes(key))

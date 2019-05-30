@@ -53,4 +53,9 @@ describe('argv', function () {
     assert.deepStrictEqual(result, { _: [], selection: 'foo', other: 'bar' });
   });
 
+  it('It should support `options.number`', function () {
+    const result = argv(['--max', '5'], { number: true });
+    assert.deepStrictEqual(result, { _: [], max: 5 });
+  });
+
 });
