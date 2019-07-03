@@ -62,11 +62,11 @@ module.exports = function argv(args, options = {}) {
   function set(key, value) {
     if (key[1] === '-') {
       let name = key.replace(/^-+/, '');
-      if (name.indexOf('no-') === 0 && name.length > 3 && value === true) {
+      if (value === true && /^no-[^-]/.test(name)) {
         name = name.substr(3);
         value = false;
       }
-      name = name.replace(/-(\w)/g, (_, a) => a.toUpperCase());
+      name = name.replace(/-+(\w)/g, (_, a) => a.toUpperCase());
       _set(name, value);
     } else {
       key.slice(1).split('').forEach(k => {
@@ -83,7 +83,7 @@ module.exports = function argv(args, options = {}) {
 
   function _set(key, value) {
     const dest = options._ ? result.argv : result;
-    if (options.number && /^[+-]?\d+(\.\d+)?([eE]\d+)?$/.test(value)) {
+    if (options.number && /^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$/.test(value)) {
       value = +value;
     }
     if (
