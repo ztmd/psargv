@@ -72,10 +72,10 @@ module.exports = function argv(args, options = {}) {
       key.slice(1).split('').forEach(k => {
         let alias = options.alias && options.alias[k];
         if (alias) {
-          _set(alias, value)
+          _set(alias, value);
         }
         if (!alias || options.keepAlias) {
-          _set(k, value)
+          _set(k, value);
         }
       });
     }
