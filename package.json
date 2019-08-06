@@ -1,6 +1,6 @@
 {
   "name": "psargv",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Opinionated argument parser for node.js CLI.",
   "main": "index.js",
   "scripts": {

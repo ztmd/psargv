@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function argv(args, options = {}) {
+function psargv(args, options = {}) {
 
   if (!Array.isArray(args)) {
     throw new Error('`args` must be an array');
@@ -36,7 +36,7 @@ module.exports = function argv(args, options = {}) {
       }
     } else if (arg === '--') {
       // extra args
-      result.$ = argv(args, options);
+      result.$ = psargv(args, options);
       break;
     } else if (arg[0] === '-') {
       if (arg.indexOf('=') > 0) {
@@ -101,3 +101,7 @@ module.exports = function argv(args, options = {}) {
   }
 
 };
+
+psargv.argv = psargv(process.argv.slice(2));
+
+module.exports = psargv;
