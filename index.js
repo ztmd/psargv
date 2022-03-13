@@ -10,6 +10,7 @@ function psargv(args, options = {}) {
 
   const {
     first = true,
+    number = true,
     multi
   } = options;
 
@@ -22,7 +23,7 @@ function psargv(args, options = {}) {
   }
 
   while (args.length) {
-    let arg = args.shift();
+    const arg = args.shift();
 
     if (!arg) {
       continue;
@@ -45,7 +46,7 @@ function psargv(args, options = {}) {
           continue;
         }
         // --key=value
-        let [key, ...values] = arg.split('=');
+        const [key, ...values] = arg.split('=');
         set(key, values.join('='));
       } else if (args[0] && args[0][0] !== '-') {
         // --key value
@@ -70,7 +71,7 @@ function psargv(args, options = {}) {
       _set(name, value);
     } else {
       key.slice(1).split('').forEach(k => {
-        let alias = options.alias && options.alias[k];
+        const alias = options.alias && options.alias[k];
         if (alias) {
           _set(alias, value);
         }
@@ -82,10 +83,19 @@ function psargv(args, options = {}) {
   }
 
   function _set(key, value) {
+
+    if (
+      !options.unsafe
+      && ['prototype', 'constructor', '__proto__'].includes(key)
+    ) {
+      return;
+    }
+
     const dest = options._ ? result.argv : result;
-    if (options.number && /^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$/.test(value)) {
+    if (number && /^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$/.test(value)) {
       value = +value;
     }
+
     if (
       multi === true
       || (Array.isArray(multi) && multi.includes(key))
@@ -95,12 +105,19 @@ function psargv(args, options = {}) {
       } else {
         dest[key] = [value];
       }
+    } else if (multi === false) {
+      dest[key] = value;
+    } else if (dest[key]) {
+      if (Array.isArray(dest[key])) {
+        dest[key].push(value);
+      } else {
+        dest[key] = [dest[key], value];
+      }
     } else {
       dest[key] = value;
     }
   }
-
-};
+}
 
 psargv.argv = psargv(process.argv.slice(2));
 
